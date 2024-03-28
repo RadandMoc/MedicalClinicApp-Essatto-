@@ -1,0 +1,173 @@
+﻿<Window x:Class="MedicalClinicApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MedicalClinicApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Canvas x:Name="MenuView" Visibility="Visible" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" MinHeight="100" MinWidth="200" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center" MinHeight="100" MinWidth="200">
+                    <Button x:Name="CreateMenuBtn" MinHeight="40" MinWidth="80" Content="Create" Click="CreateMenuBtn_Click"/>
+                    <Label MinWidth="20" MinHeight="10"/>
+                    <Button x:Name="ReadMenuBtn" MinHeight="40" MinWidth="80" Content="Read" Click="ReadMenuBtn_Click"/>
+                </StackPanel>
+            </StackPanel>
+        </Canvas>
+        <StackPanel x:Name="ReadView" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Horizontal">
+            <ListBox x:Name="ItemsLBox" MinWidth="320" MaxWidth="800" d:ItemsSource="{d:SampleData ItemCount=1}" Visibility="Visible"/>
+            <Label Width="20"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="100" MinWidth="200">
+                <Button x:Name="UpdateObjReadBtn" MinHeight="40" MinWidth="80" Content="Update" Click="UpdateObjReadBtn_Click"/>
+                <Label MinWidth="20" MinHeight="10"/>
+                <Button x:Name="DeleteReadBtn" MinHeight="40" MinWidth="80" Content="Delete" Click="DeleteCreateBtn_Click"/>
+                <Label MinWidth="20" MinHeight="10"/>
+                <ComboBox x:Name="DataTypeCmbBox" SelectionChanged="DataTypeCmbBox_SelectionChanged">
+                </ComboBox>
+                <Label MinWidth="20" MinHeight="100"/>
+                <Button x:Name="BackFromReadBtn" MinHeight="40" MinWidth="80" Content="Back" Click="BackBtn_Click"/>
+                <Label MinHeight="20"/>
+                <Button x:Name="sort" MinHeight="40" Content="Sort" Click="sort_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel x:Name="CreateView" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Stretch" Orientation="Horizontal">
+            <Label Width="30" Height="60"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MinHeight="100" MinWidth="200">
+                <Button x:Name="CreateObjCreateBtn" MinHeight="40" MinWidth="80" Content="Create" Click="CreateObjCreateBtn_Click"/>
+                <Label MinWidth="20" MinHeight="10"/>
+                <ComboBox x:Name="DataTypeCreateCmbBox" SelectionChanged="DataTypeCreateCmbBox_SelectionChanged">
+                </ComboBox>
+                <Label MinWidth="20" MinHeight="100"/>
+                <Button x:Name="BackFromCreateBtn" MinHeight="40" MinWidth="80" Content="Back" Click="BackBtn_Click"/>
+            </StackPanel>
+        </StackPanel>
+        <Canvas Visibility="Visible" x:Name="DataEntry" HorizontalAlignment="Left" VerticalAlignment="Top">
+            <Canvas Visibility="Hidden" x:Name="AddressEntry">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="20"/>
+                        <Label Content="Country"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Street"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="City"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Zip Code"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="26"/>
+                        <TextBox x:Name="CountryEntry" Width="150"/>
+                        <Label Content="" Height="26"/>
+                        <TextBox x:Name="StreetEntry" Width="150"/>
+                        <Label Content="" Height="26"/>
+                        <TextBox x:Name="CityEntry" Width="150"/>
+                        <Label Content="" Height="27"/>
+                        <TextBox x:Name="ZipCodeEntry" Width="150"/>
+                    </StackPanel>
+                </StackPanel>
+            </Canvas>
+            <Canvas Visibility="Hidden" x:Name="PersonalDataEntry">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="20"/>
+                        <Label Content="First Name"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Second Name"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Last Name"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="PESEL"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Phone"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="26"/>
+                        <TextBox x:Name="FNameEntry" Width="150"/>
+                        <Label Content="" Height="26"/>
+                        <TextBox x:Name="SNameEntry" Width="150"/>
+                        <Label Content="" Height="26"/>
+                        <TextBox x:Name="LNameEntry" Width="150"/>
+                        <Label Content="" Height="27"/>
+                        <TextBox x:Name="PeselEntry" Width="150"/>
+                        <Label Content="" Height="27"/>
+                        <TextBox x:Name="PhoneEntry" Width="150"/>
+                    </StackPanel>
+                </StackPanel>
+            </Canvas>
+            <Canvas Visibility="Hidden" x:Name="SpecializationEntry">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="20"/>
+                        <Label Content="Specialization Name"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="26"/>
+                        <TextBox x:Name="SpecializationNameEntry" Width="150"/>
+                    </StackPanel>
+                </StackPanel>
+            </Canvas>
+            <Canvas Visibility="Hidden" x:Name="PatientEntry">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="20"/>
+                        <Label Content="Address"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Personal Data"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="23"/>
+                        <ComboBox x:Name="AddressCmbBox" Width="150"></ComboBox>
+                        <Label Content="" Height="23"/>
+                        <ComboBox x:Name="PersonalDataCmbBox" Width="150"></ComboBox>
+                    </StackPanel>
+                </StackPanel>
+            </Canvas>
+            <Canvas Visibility="Hidden" x:Name="DoctorEntry">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="20"/>
+                        <Label Content="Address"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Personal Data"/>
+                        <Label Content="" Height="20"/>
+                        <Label Content="Specialization"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="23"/>
+                        <ComboBox x:Name="DocAddressCmbBox" Width="150"></ComboBox>
+                        <Label Content="" Height="23"/>
+                        <ComboBox x:Name="DocPersonalDataCmbBox" Width="150"></ComboBox>
+                        <Label Content="" Height="23"/>
+                        <ListBox x:Name="DocSpecLstBox" SelectionMode="Multiple"></ListBox>
+                    </StackPanel>
+                </StackPanel>
+            </Canvas>
+            <Canvas Visibility="Hidden" x:Name="MedicalAppointmentEntry">
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="20"/>
+                        <Label Content="Visit Time"/>
+                        <Label Content="" Height="25"/>
+                        <Label Content="Was meeting?"/>
+                        <Label Content="" Height="25"/>
+                        <Label Content="Doctors"/>
+                        <Label Content="" Height="25"/>
+                        <Label Content="Patients"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Vertical">
+                        <Label Content="" Height="23"/>
+                        <DatePicker x:Name="VisitDate" Width="150"/>
+                        <Label Content="" Height="28"/>
+                        <CheckBox x:Name="WasMeetingChkBox"/>
+                        <Label Content="" Height="25"/>
+                        <ListBox x:Name="VisitDoctorsLstBox" SelectionMode="Multiple"></ListBox>
+                        <Label Content="" Height="25"/>
+                        <ListBox x:Name="VisitPatientsLstBox" SelectionMode="Multiple"></ListBox>
+                    </StackPanel>
+                </StackPanel>
+            </Canvas>
+        </Canvas>
+    </Grid>
+</Window>
