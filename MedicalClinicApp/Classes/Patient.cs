@@ -24,7 +24,16 @@ namespace MedicalClinicApp.Classes
         public DateTime ActualizationDate { get; set; }
         public ICollection<MedicalAppointmentPatients> MedicalAppointmentPatients { get; set; }
 
-        public override string ToString() => $"Patient {PersonalData.ToString()}, \nNo. {IdP.ToString()}\nLifing at {Address.ToString()}";
+        public override string ToString()
+        {
+            string returner = "";
+            if (PersonalData != null)
+                returner += $"Patient {PersonalData.ToString()}, \n";
+            returner += $"No. {IdP.ToString()}";
+            if (Address != null)
+                returner += $"\nLifing at {Address.ToString()}";
+            return returner;
+        }
         public int CompareTo(Patient other)
         {
             if (other == null) return 1;
