@@ -336,22 +336,20 @@ namespace MedicalClinicApp.Classes
         /// <param name="x"></param>
         public void Update(Patient updating, Patient x)
         {
-            var returner = new Patient
+            var patientToUpdate = _context.Patients.FirstOrDefault(p => p.IdP == updating.IdP);
+            if (patientToUpdate != null)
             {
-                IdP = updating.IdP,
-                IdA = x.IdA,
-                Address = x.Address,
-                IdPD = x.IdPD,
-                PersonalData = x.PersonalData,
-                PersonalDataArchives = x.PersonalDataArchives,
-                AddressArchives = x.AddressArchives,
-                ActualizationDate = x.ActualizationDate,
-                MedicalAppointmentPatients = x.MedicalAppointmentPatients
-            };
+                patientToUpdate.IdA = x.IdA;
+                patientToUpdate.Address = x.Address;
+                patientToUpdate.IdPD = x.IdPD;
+                patientToUpdate.PersonalData = x.PersonalData;
+                patientToUpdate.PersonalDataArchives = x.PersonalDataArchives;
+                patientToUpdate.AddressArchives = x.AddressArchives;
+                patientToUpdate.ActualizationDate = x.ActualizationDate;
+                patientToUpdate.MedicalAppointmentPatients = x.MedicalAppointmentPatients;
 
-            _context.Patients.Remove(updating);
-            _context.Patients.Add(returner);
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
         }
 
         /// <summary>
