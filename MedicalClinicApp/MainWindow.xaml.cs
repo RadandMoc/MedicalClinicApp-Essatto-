@@ -620,7 +620,7 @@ namespace MedicalClinicApp
             dbContext = new MedicalClinicContext(options);
             using (dbContext)
             {
-                switch (DataTypeCreateCmbBox.SelectedItem)
+                switch (DataTypeCmbBox.SelectedItem)
                 {
                     case DataToManipulate.Address:
                         Address old = (Address)ItemsLBox.SelectedItem;
